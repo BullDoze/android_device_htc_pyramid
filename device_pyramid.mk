@@ -126,19 +126,8 @@ PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_LOCALES += en_US hdpi
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/htc/pyramid/prebuilt/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
-    device/htc/pyramid/modules/bcmdhd.ko:/system/lib/modules/bcmdhd.ko
-
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/htc/pyramid/pyramid-vendor.mk)
-
 
 # media profiles and capabilities spec
 $(call inherit-product, device/htc/pyramid/media_a1026.mk)
